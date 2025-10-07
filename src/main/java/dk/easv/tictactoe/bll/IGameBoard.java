@@ -3,7 +3,7 @@ package dk.easv.tictactoe.bll;
 
 /**
  *
- * @author EASV
+ * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
  */
 public interface IGameBoard
 {

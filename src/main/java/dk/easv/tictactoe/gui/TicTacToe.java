@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author EASV
+ * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
  */
 public class TicTacToe extends Application
 {

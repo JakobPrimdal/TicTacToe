@@ -18,7 +18,7 @@ import dk.easv.tictactoe.bll.IGameBoard;
 
 /**
  *
- * @author EASV
+ * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
  */
 public class TicTacViewController implements Initializable
 {
