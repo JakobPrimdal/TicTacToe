@@ -9,6 +9,8 @@ import dk.easv.tictactoe.gui.controller.TicTacViewController;
  */
 public class GameBoard implements IGameBoard
 {
+    // Instance Variables
+    private int winnerID = 0;
     int[][] ABoard = new int[3][3];
 
     public int getABoardValue(int col, int row){
@@ -69,12 +71,20 @@ public class GameBoard implements IGameBoard
      * Tells us if the game has ended either by draw or by meeting the winning
      * condition.
      *
-     * @return true if the game is over, else it will retun false.
+     * @return true if the game is over, else it will return false.
      */
     public boolean isGameOver()
     {
-        //TODO Implement this method
-        return false;
+        if(checkForWin(ABoard)){
+            System.out.println(getWinner() + " has won!");
+
+            return true;
+        } else if (checkForDraw(ABoard)){
+            System.out.println(getWinner() + " is a draw");
+            return true;
+        }
+        else {return false;}
+
     }
 
     /**
@@ -84,8 +94,7 @@ public class GameBoard implements IGameBoard
      */
     public int getWinner()
     {
-        //TODO Implement this method
-        return -1;
+        return winnerID;
     }
 
     /**
@@ -112,6 +121,52 @@ public class GameBoard implements IGameBoard
         System.out.println(ABoard[2][2]+", ");
         System.out.println("");
 
+    }
+
+    private boolean checkForWin(int[][] ABoard){
+        ABoard = this.ABoard;
+
+        // Checks for wins horizontally
+        for (int i = 0; i < 3; i++){
+            if (ABoard[i][0] == ABoard[i][1] && ABoard[i][1] == ABoard[i][2] && ABoard[i][0]!= 0) {
+                winnerID = ABoard[i][0];
+                return true;
+            }
+        }
+
+        // Checks for wins vertically
+        for (int i = 0; i < 3; i++){
+            if (ABoard[0][i] == ABoard[1][i] && ABoard[1][i] == ABoard[2][i] && ABoard[0][i] != 0){
+                winnerID = ABoard[0][i];
+                return true;
+            }
+        }
+
+        // Checks for wins diagonally
+        if (ABoard[0][0] == ABoard[1][1] && ABoard[1][1] == ABoard[2][2] && ABoard[0][0] != 0){
+            winnerID = ABoard[0][0];
+            return true;}
+        if (ABoard[0][2] == ABoard[1][1] && ABoard[1][1] == ABoard[2][0] && ABoard[0][2] != 0){
+            winnerID = ABoard[0][2];
+            return true;}
+
+        return false;
+    }
+
+    private boolean checkForDraw(int[][] ABoard){
+        ABoard = this.ABoard;
+
+        // Checks for draw
+        for (int row = 0; row < 3; row++){
+            for (int col = 0; col < 3; col++){
+                if(ABoard[row][col] == 0) {
+                    return false; // Not a draw
+                }
+            }
+        }
+
+        winnerID = -1;
+        return true;
     }
 
 }

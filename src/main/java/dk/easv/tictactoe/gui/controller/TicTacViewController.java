@@ -30,8 +30,7 @@ public class TicTacViewController implements Initializable
 
     @FXML
     private GridPane gridPane;
-    
-    private static final String TXT_PLAYER = "Player: ";
+
     private IGameBoard game;
 
     /**
@@ -72,6 +71,11 @@ public class TicTacViewController implements Initializable
 
                     btn.setText(xOrO);
                     setPlayer();
+
+                    if (game.isGameOver()){
+                        int winner = game.getWinner();
+                        displayWinner(winner);
+                    }
                 }
             }
         } catch (Exception e)
@@ -120,9 +124,9 @@ public class TicTacViewController implements Initializable
     private void setPlayer()
     {
         if (game.getPlayer() == 1){
-            lblPlayer.setText(TXT_PLAYER + "X");
+            lblPlayer.setText("Player X' turn.");
         } if (game.getPlayer() == 0){
-            lblPlayer.setText(TXT_PLAYER + "O");
+            lblPlayer.setText("Player O' turn.");
         }
 
     }
@@ -137,11 +141,14 @@ public class TicTacViewController implements Initializable
         String message = "";
         switch (winner)
         {
-            case -1:
-                message = "It's a draw :-(";
+            case 1:
+                message = "Player X wins!";
                 break;
-            default:
-                message = "Player " + winner + " wins!!!";
+            case 2:
+                message = "Player O wins!";
+                break;
+            case -1:
+                message = "No one wins, it's a draw.";
                 break;
         }
         lblPlayer.setText(message);
