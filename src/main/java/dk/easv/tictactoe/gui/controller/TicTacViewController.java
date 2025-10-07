@@ -61,9 +61,9 @@ public class TicTacViewController implements Initializable
                     Button btn = (Button) event.getSource();
                     String xOrO = player == 0 ? "X" : "O";
                     if(player == 0){
-                        game.setABoardValue(r,c,5);
+                        game.setABoardValue(r,c,1);
                     } else if (player == 1) {
-                        game.setABoardValue(r,c,3);
+                        game.setABoardValue(r,c,2);
                     }
 
                     soutTest(); // <- is only for testing the value of ABoard
