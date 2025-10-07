@@ -59,8 +59,10 @@ public class GameBoard implements IGameBoard
      */
     public boolean play(int col, int row)
     {
-        //TODO Implement this method
-        return true;
+        if(ABoard[row][col] == 0){
+            return true;
+        }
+        else {return false;}
     }
 
     /**

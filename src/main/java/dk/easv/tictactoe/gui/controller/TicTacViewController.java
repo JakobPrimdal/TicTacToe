@@ -48,7 +48,7 @@ public class TicTacViewController implements Initializable
             Integer col = GridPane.getColumnIndex((Node) event.getSource());
             int r = (row == null) ? 0 : row;
             int c = (col == null) ? 0 : col;
-            int player = game.getNextPlayer();
+
             if (game.play(c, r))
             {
                 if (game.isGameOver())
@@ -58,6 +58,7 @@ public class TicTacViewController implements Initializable
                 }
                 else
                 {
+                    int player = game.getNextPlayer();
                     Button btn = (Button) event.getSource();
                     String xOrO = player == 0 ? "X" : "O";
                     if(player == 0){
@@ -65,6 +66,7 @@ public class TicTacViewController implements Initializable
                     } else if (player == 1) {
                         game.setABoardValue(r,c,2);
                     }
+
 
                     soutTest(); // <- is only for testing the value of ABoard
 
