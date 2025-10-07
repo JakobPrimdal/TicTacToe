@@ -1,13 +1,23 @@
 
 package dk.easv.tictactoe.bll;
 
+import dk.easv.tictactoe.gui.controller.TicTacViewController;
+
 /**
  *
- * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
+ * @author Group 2 --> Jonas, Jakob, Frederik, Ayuub
  */
 public class GameBoard implements IGameBoard
 {
-    int[][] MdABoard = new int[3][3];
+    int[][] ABoard = new int[3][3];
+
+    public int getABoardValue(int col, int row){
+        return ABoard[col][row];
+    }
+
+    public void setABoardValue(int col, int row, int value){
+        ABoard[col][row] = value;
+    }
 
 
 
@@ -81,6 +91,25 @@ public class GameBoard implements IGameBoard
      */
     public void newGame()
     {
-        //TODO Implement this method
+        // This nested for-loop is for assigning all index's of ABoard to the value 0
+        for (int row = 0; row < 3; row++){
+            for (int col = 0; col < 3; col++){
+                ABoard[row][col] = 0;
+            }
+        }
+        System.out.print(ABoard[0][0]+", ");
+        System.out.print(ABoard[0][1]+", ");
+        System.out.println(ABoard[0][2]+", ");
+
+        System.out.print(ABoard[1][0]+", ");
+        System.out.print(ABoard[1][1]+", ");
+        System.out.println(ABoard[1][2]+", ");
+
+        System.out.print(ABoard[2][0]+", ");
+        System.out.print(ABoard[2][1]+", ");
+        System.out.println(ABoard[2][2]+", ");
+        System.out.println("");
+
     }
+
 }

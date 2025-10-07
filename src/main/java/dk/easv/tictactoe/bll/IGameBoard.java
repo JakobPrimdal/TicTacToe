@@ -3,7 +3,7 @@ package dk.easv.tictactoe.bll;
 
 /**
  *
- * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
+ * @author Group 2 --> Jonas, Jakob, Frederik, Ayuub
  */
 public interface IGameBoard
 {
@@ -48,4 +48,8 @@ public interface IGameBoard
     void newGame();
 
     int getPlayer();
+
+    int getABoardValue(int col, int row);
+
+    void setABoardValue(int col, int row, int value);
 }

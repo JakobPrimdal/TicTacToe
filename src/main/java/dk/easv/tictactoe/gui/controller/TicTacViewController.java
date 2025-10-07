@@ -18,7 +18,7 @@ import dk.easv.tictactoe.bll.IGameBoard;
 
 /**
  *
- * @author Group 2 + Jonas, Jakob, Frederik, Ayuub
+ * @author Group 2 --> Jonas, Jakob, Frederik, Ayuub
  */
 public class TicTacViewController implements Initializable
 {
@@ -60,6 +60,14 @@ public class TicTacViewController implements Initializable
                 {
                     Button btn = (Button) event.getSource();
                     String xOrO = player == 0 ? "X" : "O";
+                    if(player == 0){
+                        game.setABoardValue(r,c,5);
+                    } else if (player == 1) {
+                        game.setABoardValue(r,c,3);
+                    }
+
+                    soutTest(); // <- is only for testing the value of ABoard
+
                     btn.setText(xOrO);
                     setPlayer();
                 }
@@ -109,9 +117,9 @@ public class TicTacViewController implements Initializable
      */
     private void setPlayer()
     {
-        if (game.getPlayer() == 0){
+        if (game.getPlayer() == 1){
             lblPlayer.setText(TXT_PLAYER + "X");
-        } if (game.getPlayer() == 1){
+        } if (game.getPlayer() == 0){
             lblPlayer.setText(TXT_PLAYER + "O");
         }
 
@@ -147,5 +155,20 @@ public class TicTacViewController implements Initializable
             Button btn = (Button) n;
             btn.setText("");
         }
+    }
+
+    public void soutTest(){
+        System.out.print(game.getABoardValue(0,0) +", ");
+        System.out.print(game.getABoardValue(0,1) +", ");
+        System.out.println(game.getABoardValue(0,2) +", ");
+
+        System.out.print(game.getABoardValue(1,0) +", ");
+        System.out.print(game.getABoardValue(1,1) +", ");
+        System.out.println(game.getABoardValue(1,2) +", ");
+
+        System.out.print(game.getABoardValue(2,0) +", ");
+        System.out.print(game.getABoardValue(2,1) +", ");
+        System.out.println(game.getABoardValue(2,2) +", ");
+        System.out.println("");
     }
 }
