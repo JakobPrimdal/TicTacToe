@@ -3,6 +3,7 @@ package dk.easv.tictactoe.gui.controller;
 
 // Java imports
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,6 +55,8 @@ public class TicTacViewController implements Initializable
                 {
                     int winner = game.getWinner();
                     displayWinner(winner);
+                    System.out.println("Highlight kaldes med coords: " + Arrays.deepToString(game.getWinningCoords()));
+                    highlightWinningLine(game.getWinningCoords());
                 }
                 else
                 {
@@ -65,16 +68,13 @@ public class TicTacViewController implements Initializable
                     } else if (player == 1) {
                         game.setABoardValue(r,c,2);
                     }
-
-
-                    soutTest(); // <- is only for testing the value of ABoard
-
                     btn.setText(xOrO);
                     setPlayer();
 
                     if (game.isGameOver()){
                         int winner = game.getWinner();
                         displayWinner(winner);
+                        highlightWinningLine(game.getWinningCoords());
                     }
                 }
             }
@@ -125,8 +125,10 @@ public class TicTacViewController implements Initializable
     {
         if (game.getPlayer() == 1){
             lblPlayer.setText("Player X' turn.");
+            lblPlayer.setStyle("-fx-text-fill: black;");
         } if (game.getPlayer() == 0){
             lblPlayer.setText("Player O' turn.");
+            lblPlayer.setStyle("-fx-text-fill: red;");
         }
 
     }
@@ -166,18 +168,19 @@ public class TicTacViewController implements Initializable
         }
     }
 
-    public void soutTest(){
-        System.out.print(game.getABoardValue(0,0) +", ");
-        System.out.print(game.getABoardValue(0,1) +", ");
-        System.out.println(game.getABoardValue(0,2) +", ");
+    private void highlightWinningLine(int[][] winningCoords) {
+        for (int[] coord : winningCoords) {
+            int row = coord[0];
+            int col = coord[1];
 
-        System.out.print(game.getABoardValue(1,0) +", ");
-        System.out.print(game.getABoardValue(1,1) +", ");
-        System.out.println(game.getABoardValue(1,2) +", ");
+            String id = "btn" + row + col;
+            Button button = (Button) gridPane.lookup("#" + id);
 
-        System.out.print(game.getABoardValue(2,0) +", ");
-        System.out.print(game.getABoardValue(2,1) +", ");
-        System.out.println(game.getABoardValue(2,2) +", ");
-        System.out.println("");
+            if (button != null) {
+                button.setStyle("-fx-background-color: lightgreen; -fx-text-fill: black;");
+            }
+        }
     }
+
+
 }

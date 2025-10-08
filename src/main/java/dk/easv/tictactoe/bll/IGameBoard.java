@@ -52,4 +52,6 @@ public interface IGameBoard
     int getABoardValue(int col, int row);
 
     void setABoardValue(int col, int row, int value);
+
+    int[][] getWinningCoords();
 }

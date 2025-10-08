@@ -11,7 +11,13 @@ public class GameBoard implements IGameBoard
 {
     // Instance Variables
     private int winnerID = 0;
-    int[][] ABoard = new int[3][3];
+    private int[][] ABoard = new int[3][3];
+
+    private int[][] winningCoords; // Gemmer koordinaterne for vinderlinjen
+
+
+
+
 
     public int getABoardValue(int col, int row){
         return ABoard[col][row];
@@ -77,7 +83,6 @@ public class GameBoard implements IGameBoard
     {
         if(checkForWin(ABoard)){
             System.out.println(getWinner() + " has won!");
-
             return true;
         } else if (checkForDraw(ABoard)){
             System.out.println(getWinner() + " is a draw");
@@ -130,6 +135,7 @@ public class GameBoard implements IGameBoard
         for (int i = 0; i < 3; i++){
             if (ABoard[i][0] == ABoard[i][1] && ABoard[i][1] == ABoard[i][2] && ABoard[i][0]!= 0) {
                 winnerID = ABoard[i][0];
+                winningCoords = new int[][] { {i, 0}, {i, 1}, {i, 2} };
                 return true;
             }
         }
@@ -138,6 +144,7 @@ public class GameBoard implements IGameBoard
         for (int i = 0; i < 3; i++){
             if (ABoard[0][i] == ABoard[1][i] && ABoard[1][i] == ABoard[2][i] && ABoard[0][i] != 0){
                 winnerID = ABoard[0][i];
+                winningCoords = new int[][] { {0, i}, {1, i}, {2, i} };
                 return true;
             }
         }
@@ -145,9 +152,12 @@ public class GameBoard implements IGameBoard
         // Checks for wins diagonally
         if (ABoard[0][0] == ABoard[1][1] && ABoard[1][1] == ABoard[2][2] && ABoard[0][0] != 0){
             winnerID = ABoard[0][0];
+            winningCoords = new int[][] { {0, 0}, {1, 1}, {2, 2} };
+            System.out.println("Diagonal vind: coords = " + winningCoords[0][0] + "," + winningCoords[0][1] + " etc");
             return true;}
         if (ABoard[0][2] == ABoard[1][1] && ABoard[1][1] == ABoard[2][0] && ABoard[0][2] != 0){
             winnerID = ABoard[0][2];
+            winningCoords = new int[][] { {0, 2}, {1, 1}, {2, 0} };
             return true;}
 
         return false;
@@ -167,6 +177,10 @@ public class GameBoard implements IGameBoard
 
         winnerID = -1;
         return true;
+    }
+
+    public int[][] getWinningCoords() {
+        return winningCoords;
     }
 
 }
