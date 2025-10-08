@@ -12,22 +12,28 @@ public class GameBoard implements IGameBoard
     // Instance Variables
     private int winnerID = 0;
     private int[][] ABoard = new int[3][3];
+    private int[][] winningCoords;
 
-    private int[][] winningCoords; // Gemmer koordinaterne for vinderlinjen
-
-
-
-
-
+    /**
+     *
+     * @param col
+     * @param row
+     * @return the value of a specific index of the ABoard[][]
+     */
     public int getABoardValue(int col, int row){
         return ABoard[col][row];
     }
 
+    /**
+     * Set a value on specific index's in ABoard[][]
+     *
+     * @param col
+     * @param row
+     * @param value
+     */
     public void setABoardValue(int col, int row, int value){
         ABoard[col][row] = value;
     }
-
-
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -115,6 +121,11 @@ public class GameBoard implements IGameBoard
         }
     }
 
+    /**
+     *
+     * @param ABoard
+     * @return boolean value of whether there is a win the game or not.
+     */
     private boolean checkForWin(int[][] ABoard){
         ABoard = this.ABoard;
 
@@ -150,6 +161,11 @@ public class GameBoard implements IGameBoard
         return false;
     }
 
+    /**
+     *
+     * @param ABoard
+     * @return boolean value of whether there is a draw the game or not.
+     */
     private boolean checkForDraw(int[][] ABoard){
         ABoard = this.ABoard;
 
@@ -166,6 +182,9 @@ public class GameBoard implements IGameBoard
         return true;
     }
 
+    /**
+     * @return the coords for the winning line
+     */
     public int[][] getWinningCoords() {
         return winningCoords;
     }

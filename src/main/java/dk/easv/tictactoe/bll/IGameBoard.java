@@ -47,11 +47,23 @@ public interface IGameBoard
      */
     void newGame();
 
+    /**
+     * @return the value of the current player
+     */
     int getPlayer();
 
-    int getABoardValue(int col, int row);
-
+    /**
+     *
+     * Set a value on specific index's in ABoard[][]
+     *
+     * @param col
+     * @param row
+     * @param value
+     */
     void setABoardValue(int col, int row, int value);
 
+    /**
+     * @return the coords for the winning line
+     */
     int[][] getWinningCoords();
 }

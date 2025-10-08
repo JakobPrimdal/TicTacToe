@@ -3,7 +3,6 @@ package dk.easv.tictactoe.gui.controller;
 
 // Java imports
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,14 +50,7 @@ public class TicTacViewController implements Initializable
 
             if (game.play(c, r))
             {
-                if (game.isGameOver())
-                {
-                    int winner = game.getWinner();
-                    displayWinner(winner);
-                    System.out.println("Highlight kaldes med coords: " + Arrays.deepToString(game.getWinningCoords()));
-                    highlightWinningLine(game.getWinningCoords());
-                }
-                else
+                if (!game.isGameOver())
                 {
                     int player = game.getNextPlayer();
                     Button btn = (Button) event.getSource();
@@ -115,9 +107,7 @@ public class TicTacViewController implements Initializable
         setPlayer();
     }
 
-
-
-
+    
     /**
      * Set the next player
      */
@@ -125,10 +115,8 @@ public class TicTacViewController implements Initializable
     {
         if (game.getPlayer() == 1){
             lblPlayer.setText("Player X' turn.");
-            lblPlayer.setStyle("-fx-text-fill: black;");
         } if (game.getPlayer() == 0){
             lblPlayer.setText("Player O' turn.");
-            lblPlayer.setStyle("-fx-text-fill: red;");
         }
 
     }
@@ -169,6 +157,10 @@ public class TicTacViewController implements Initializable
         }
     }
 
+    /**
+     * Finds the buttons in the winning line and changes their background to lightgreen
+     * @param winningCoords
+     */
     private void highlightWinningLine(int[][] winningCoords) {
         for (int[] coord : winningCoords) {
             int row = coord[0];
