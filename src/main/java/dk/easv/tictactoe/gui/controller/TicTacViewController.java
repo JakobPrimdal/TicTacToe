@@ -165,6 +165,7 @@ public class TicTacViewController implements Initializable
         {
             Button btn = (Button) n;
             btn.setText("");
+            btn.setStyle("");
         }
     }
 

@@ -113,19 +113,6 @@ public class GameBoard implements IGameBoard
                 ABoard[row][col] = 0;
             }
         }
-        System.out.print(ABoard[0][0]+", ");
-        System.out.print(ABoard[0][1]+", ");
-        System.out.println(ABoard[0][2]+", ");
-
-        System.out.print(ABoard[1][0]+", ");
-        System.out.print(ABoard[1][1]+", ");
-        System.out.println(ABoard[1][2]+", ");
-
-        System.out.print(ABoard[2][0]+", ");
-        System.out.print(ABoard[2][1]+", ");
-        System.out.println(ABoard[2][2]+", ");
-        System.out.println("");
-
     }
 
     private boolean checkForWin(int[][] ABoard){
@@ -153,8 +140,8 @@ public class GameBoard implements IGameBoard
         if (ABoard[0][0] == ABoard[1][1] && ABoard[1][1] == ABoard[2][2] && ABoard[0][0] != 0){
             winnerID = ABoard[0][0];
             winningCoords = new int[][] { {0, 0}, {1, 1}, {2, 2} };
-            System.out.println("Diagonal vind: coords = " + winningCoords[0][0] + "," + winningCoords[0][1] + " etc");
             return true;}
+
         if (ABoard[0][2] == ABoard[1][1] && ABoard[1][1] == ABoard[2][0] && ABoard[0][2] != 0){
             winnerID = ABoard[0][2];
             winningCoords = new int[][] { {0, 2}, {1, 1}, {2, 0} };
