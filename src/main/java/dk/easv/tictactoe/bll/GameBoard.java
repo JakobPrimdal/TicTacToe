@@ -62,7 +62,7 @@ public class GameBoard implements IGameBoard
     }
 
     /**
-     * Attempts to let the current player play at the given coordinates. It the
+     * Attempts to let the current player play at the given coordinates. If the
      * attempt is succesfull the current player has ended his turn and it is the
      * next players turn.
      *
@@ -71,12 +71,15 @@ public class GameBoard implements IGameBoard
      * @return true if the move is accepted, otherwise false. If gameOver == true
      * this method will always return false.
      */
-    public boolean play(int col, int row)
-    {
-        if(ABoard[row][col] == 0){
-            return true;
-        }
-        else {return false;}
+    public boolean play(int col, int row) {
+        if (!isGameOver()) {
+            if (ABoard[row][col] == 0) {
+                getNextPlayer();
+                return true;
+            } else {
+                return false;
+            }
+        } else {return false;}
     }
 
     /**
@@ -88,10 +91,8 @@ public class GameBoard implements IGameBoard
     public boolean isGameOver()
     {
         if(checkForWin(ABoard)){
-            System.out.println(getWinner() + " has won!");
             return true;
         } else if (checkForDraw(ABoard)){
-            System.out.println(getWinner() + " is a draw");
             return true;
         }
         else {return false;}
