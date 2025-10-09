@@ -36,7 +36,7 @@ public interface IGameBoard
     boolean isGameOver();
 
     /**
-     * Gets the id of the winner, -1 if its a draw or if the game is still running.
+     * Gets the id of the winner, -1 if its a draw.
      *
      * @return int id of winner, or -1 if draw or if gameOver() == false.
      */
@@ -66,4 +66,10 @@ public interface IGameBoard
      * @return the coords for the winning line
      */
     int[][] getWinningCoords();
+
+    /**
+     *
+     * @return the value of checkForDraw()
+     */
+    boolean getValueCheckForDraw();
 }

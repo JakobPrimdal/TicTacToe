@@ -1,8 +1,6 @@
 
 package dk.easv.tictactoe.bll;
 
-import dk.easv.tictactoe.gui.controller.TicTacViewController;
-
 /**
  *
  * @author Group 2 --> Jonas, Jakob, Frederik, Ayuub
@@ -181,6 +179,13 @@ public class GameBoard implements IGameBoard
 
         winnerID = -1;
         return true;
+    }
+
+    /**
+     * @return the value of checkForDraw()
+     */
+    public boolean getValueCheckForDraw(){
+        return checkForDraw(ABoard);
     }
 
     /**

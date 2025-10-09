@@ -63,10 +63,15 @@ public class TicTacViewController implements Initializable
                     btn.setText(xOrO);
                     setPlayer();
 
-                    if (game.isGameOver()){
+                    if (game.isGameOver() && !game.getValueCheckForDraw()){
                         int winner = game.getWinner();
                         displayWinner(winner);
                         highlightWinningLine(game.getWinningCoords());
+                    }
+                    if (game.getValueCheckForDraw()){
+                        int winner = game.getWinner();
+                        displayWinner(winner);
+                        highlightDrawWin();
                     }
                 }
             }
@@ -175,5 +180,13 @@ public class TicTacViewController implements Initializable
         }
     }
 
+    private void highlightDrawWin()
+    {
+        for(Node n : gridPane.getChildren())
+        {
+            Button btn = (Button) n;
+            btn.setStyle("-fx-background-color: orange; -fx-text-fill: black");
+        }
+    }
 
 }
