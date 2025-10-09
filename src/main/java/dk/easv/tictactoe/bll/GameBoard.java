@@ -53,7 +53,7 @@ public class GameBoard implements IGameBoard
     }
 
     /*
-      Returns the value of player
+      Returns the value of current player
      */
     public int getPlayer(){
         return player;
