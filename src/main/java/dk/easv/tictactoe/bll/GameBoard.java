@@ -12,15 +12,6 @@ public class GameBoard implements IGameBoard
     private int[][] ABoard = new int[3][3];
     private int[][] winningCoords;
 
-    /**
-     *
-     * @param col
-     * @param row
-     * @return the value of a specific index of the ABoard[][]
-     */
-    public int getABoardValue(int col, int row){
-        return ABoard[col][row];
-    }
 
     /**
      * Set a value on specific index's in ABoard[][]
